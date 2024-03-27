@@ -1,4 +1,4 @@
-# get list of expenses in list of dictionaries, taking into account multiple entries of one person's name
+# get list of expenses in list of dictionaries
 expense_list = []
 name_list = []
 get_amt = True
@@ -55,11 +55,11 @@ while len(owe_list) != 0 and len(owed_list) != 0:
         owe_list[0].update({"owe": (amt_owe - amt_owed)})
         owed_list[0].update({"owed": 0})
         print(f"{person_owe} owes {person_owed}: ${amt_owed:.2f}")
-    elif amt_owe < amt_owed:
+    elif amt_owe < amt_owed: # amt owed is more than one person owes (someone has to be paid more than once)
         owe_list[0].update({"owe": 0})
         owed_list[0].update({"owed": (amt_owed - amt_owe)})
         print(f"{person_owe} owes {person_owed}: ${amt_owe:.2f}")
-    if owe_list[0].get("amt") == 0 or owe_list[0].get("amt") == 0.0:
+    if owe_list[0].get("owe") == 0 or owe_list[0].get("owe") == 0.0:
         owe_list.pop(0)
-    if owed_list[0].get("owe") == 0 or owed_list[0].get("owed") == 0.0:
+    if owed_list[0].get("owed") == 0 or owed_list[0].get("owed") == 0.0:
         owed_list.pop(0)
